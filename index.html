@@ -33,15 +33,15 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron d-none">
+    <div id="instructions" class="jumbotron">
         <div class="container">
             <div class="row align-items-end">
                 <div class="col-sm-6">
                     <i class="fas fa-user-secret text-white shadow-lg bg-dark rounded-circle fa-10x"></i>
                     <form class="form-inline my-3">
-                        <label for="inlineFormInputName2" class="mb-2 mr-2">Player's Name</label>
-                        <input type="text" class="form-control mb-2 mr-2" id="inlineFormInputName2" placeholder="Jane Doe">
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        <label for="nameInput" class="mb-2 mr-2">Player's Name</label>
+                        <input type="text" class="form-control mb-2 mr-2" id="nameInput" placeholder="Jane Doe">
+                        <button id="submitName" type="submit" class="btn btn-primary mb-2">Submit</button>
                     </form>
                 </div>
                 <div class="col-sm-6">
@@ -67,107 +67,130 @@
             </div>
         </div>
     </div>
-    <div class="container pt-4">
+    <div id="game" class="container pt-4 d-none">
         <!-- make the game invisible before the players arrive-->
         <div class="row mx-auto">
             <div class="col pl-0">
                 <div class="card text-center">
-                    <div class="card-header clearfix">
-                        <p class="mb-0 float-left">Winner</p>
-                        <i class="far fa-hand-rock fa-fw float-right mt-1"></i>
+                    <div id="player1Header" class="card-header clearfix invisible">
+                        <p id="player1RoundResult" class="mb-0 float-left"></p>
+                        <i id="player1RoundChoice" class="far fa-hand-rock fa-fw float-right mt-1 "></i>
                     </div>
                     <div class="card-img-top mt-3">
                         <i class="fas fa-user-secret text-white shadow-lg bg-dark rounded-circle fa-10x"></i>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Player 1</h5>
-                        <div class="row align-items-center">
+                        <h5 id="firstPlayer" class="card-title">Player 1</h5>
+                        <p id="player1Status"></p>
+                        <div id="rpsFirstPlayerIcons" class="row align-items-center invisible">
                             <div class="col">
                                 <p class="mb-0">
-                                    <a href="#">
+                                    <a id="firstPlayerRockChoice" href="#">
                                         <i class="far fa-hand-rock fa-fw"></i>
                                     </a>
                                 </p>
                             </div>
                             <div class="col">
                                 <p class="mb-0">
-                                    <a href="#">
+                                    <a id="firstPlayerHandChoice" href="#">
                                         <i class="far fa-hand-paper fa-fw"></i>
                                     </a>
                                 </p>
                             </div>
                             <div class="col">
                                 <p class="mb-0">
-                                    <a href="#">
+                                    <a id="firstPlayerScissorsChoice" href="#">
                                         <i class="far fa-hand-scissors fa-fw"></i>
                                     </a>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <form class="px-2">
+                    <form id="chatFirstPlayer" class="px-2 invisible">
                         <div class="row mx-auto">
-                            <div class="col px-0"><label for="inlineFormInputName2" class="sr-only">Player's Name</label>
-                                <input type="text" class="form-control mb-2 mr-2" id="inlineFormInputName2" placeholder="Jane Doe"></div>
-                            <div class="col-auto pr-0"><button type="submit" class="btn btn-primary mb-2">></button></div>
+                            <div class="col px-0">
+                                <label for="player1Messages" class="sr-only">Player 1 texting</label>
+                                <input type="text" class="form-control mb-2 mr-2" id="player1Messages" placeholder="Send Message">
+                            </div>
+                            <div class="col-auto pr-0">
+                                <button id="player1SendsMessage" type="submit" class="btn btn-primary mb-2">></button>
+                            </div>
                         </div>
                     </form>
+                    <div class="card-footer clearfix">
+                        <p class="float-left mb-0"><strong>Wins</strong> <span id="player1Wins">0</span></p>
+                        <p class="float-right mb-0"><strong>Loses</strong> <span id="player1Loses">0</span></p>
+                    </div>
                 </div>
             </div>
             <div class="col pr-0">
                 <div class="card text-center">
-                    <div class="card-header clearfix">
-                        <p class="mb-0 float-left">Loser</p>
-                        <i class="far fa-hand-scissors fa-fw float-right mt-1"></i>
+                    <div id="player2Header" class="card-header clearfix invisible">
+                        <p id="player2RoundResult" class="mb-0 float-left"></p>
+                        <i id="player2RoundChoice" class="far fa-hand-scissors fa-fw float-right mt-1"></i>
                     </div>
                     <div class="card-img-top mt-3">
                         <i class="fas fa-user-secret text-white shadow-lg bg-dark rounded-circle fa-10x"></i>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Player 2</h5>
-                        <div class="row align-items-center">
+                        <h5 id="secondPlayer" class="card-title">Player 2</h5>
+                        <p id="player2Status"></p>
+                        <div id="rpsSecondPlayerIcons" class="row align-items-center invisible">
                             <div class="col">
                                 <p class="mb-0">
-                                    <a href="#">
+                                    <a id="secondPlayerRockChoice" href="#">
                                         <i class="far fa-hand-rock fa-fw"></i>
                                     </a>
                                 </p>
                             </div>
                             <div class="col">
                                 <p class="mb-0">
-                                    <a href="#">
+                                    <a id="secondPlayerHandChoice" href="#">
                                         <i class="far fa-hand-paper fa-fw"></i>
                                     </a>
                                 </p>
                             </div>
                             <div class="col">
                                 <p class="mb-0">
-                                    <a href="#">
+                                    <a id="secondPlayerScissorsChoice" href="#">
                                         <i class="far fa-hand-scissors fa-fw"></i>
                                     </a>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <form class="px-2">
+                    <form id="chatSecondPlayer" class="px-2 invisible">
                         <div class="row mx-auto">
-                            <div class="col px-0"><label for="inlineFormInputName2" class="sr-only">Player's Name</label>
-                                <input type="text" class="form-control mb-2" id="inlineFormInputName2" placeholder="Jane Doe"></div>
-                            <div class="col-auto pr-0"><button type="submit" class="btn btn-primary mb-2">></button></div>
+                            <div class="col px-0">
+                                <label for="player2Messages" class="sr-only">Player 2 texting</label>
+                                <input type="text" class="form-control mb-2" id="player2Messages" placeholder="Send Message">
+                            </div>
+                            <div class="col-auto pr-0">
+                                <button id="player2SendsMessage" type="submit" class="btn btn-primary mb-2">></button>
+                            </div>
                         </div>
                     </form>
+                    <div class="card-footer clearfix">
+                        <p class="float-left mb-0"><strong>Wins</strong> <span id="player2Wins">0</span></p>
+                        <p class="float-right mb-0"><strong>Loses</strong> <span id="player2Loses">0</span></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="jumbotron mt-4"></div>
+        <div id="chatMessages" class="mt-4 bg-dark text-white rounded px-3 py-3"></div>
     </div>
     <!-- bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
+    <!-- Firebase JavaScript Link -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
     <!-- customized javascript -->
     <script src="assets/javascript/app.js"></script>
 </body>
