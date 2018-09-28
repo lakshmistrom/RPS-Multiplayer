@@ -242,14 +242,7 @@ database.ref().on("value", function (snapshot) {
     // Print the initial data to the console.
     console.log(snapshot.val());
 
-    // Log the value of the various properties
-    //console.log(snapshot.val().player1);
-    //console.log(snapshot.val().player2);
-    //console.log(snapshot.val().playerIn);
-
-    // If Firebase has a highPrice and highBidder stored, update our client-side variables
-    // if (snapshot.child("player1").exists() && snapshot.child("player2").exists() && snapshot.child("playerIn").exists()) {
-    //     //update local variables with database data
+    //update local variables with database data
     let data = snapshot.val() || {};
     player1 = data.player1;
     player2 = data.player2;
@@ -437,6 +430,7 @@ database.ref("/player2").on("value", function (snapshot) {
 
 //reset values after a player has left
 window.addEventListener("beforeunload", function (event) {
+    console.log("Made it to the next section")
     //remove message history
     database.ref("/messages").remove();
 
